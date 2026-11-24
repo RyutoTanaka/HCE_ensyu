@@ -20,6 +20,7 @@ output_dir.mkdir(exist_ok=True)
 #データの読み出し
 position = pd.read_csv(csv_file, encoding="utf-8-sig")["position"].to_numpy()
 velocity = pd.read_csv(csv_file, encoding="utf-8-sig")["speed"].to_numpy()
+current = pd.read_csv(csv_file, encoding="utf-8-sig")["current"].to_numpy()
 
 acceleration = np.gradient(velocity, 1/200, axis=0)
 
@@ -28,10 +29,10 @@ tau = m*l**2*acceleration + m*l*g*np.sin(position)
 print(acceleration)
 
 # 描画処理
-plt.plot(tau)
+plt.plot(current,tau)
 plt.title(csv_file.stem)
-plt.xlabel("Sample")
-plt.ylabel("tau")
+plt.xlabel("current [mA]")
+plt.ylabel("tau [Nm]")
 plt.grid()
 
 plt.show()
