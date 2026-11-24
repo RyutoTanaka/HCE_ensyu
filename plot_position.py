@@ -13,15 +13,16 @@ output_dir = Path(__file__).parent / "outputs"
 output_dir.mkdir(exist_ok=True)
 
 #データの読み出し
-position = pd.read_csv(csv_file, encoding="utf-8-sig")["position"].to_numpy()
+velocity = pd.read_csv(csv_file, encoding="utf-8-sig")["speed"].to_numpy()
+acceleration = np.gradient(velocity, 1/50, axis=0)
 
-print(position)
+print(acceleration)
 
 # 描画処理
-plt.plot(position)
+plt.plot(acceleration)
 plt.title(csv_file.stem)
 plt.xlabel("Sample")
-plt.ylabel("Position")
+plt.ylabel("acceleration")
 plt.grid()
 
 plt.show()
