@@ -23,5 +23,8 @@ plt.title(csv_file.stem)
 plt.xlabel("Sample")
 plt.ylabel("Position")
 plt.grid()
+
+plt.show()
+
 plt.savefig(output_dir / f"{csv_file.stem}.png")
 plt.close()
