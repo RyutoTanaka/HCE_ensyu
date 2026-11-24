@@ -14,7 +14,7 @@ output_dir.mkdir(exist_ok=True)
 
 #データの読み出し
 velocity = pd.read_csv(csv_file, encoding="utf-8-sig")["speed"].to_numpy()
-acceleration = np.gradient(velocity, 1/50, axis=0)
+acceleration = np.gradient(velocity, 1/200, axis=0)
 
 print(acceleration)
 
